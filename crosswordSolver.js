@@ -31,7 +31,7 @@ const crosswordSolver = (grid, wordList) => {
     }
 
     const result = gridWords.map(row => row.join("")).join("\n");
-    console.log("Output:\n" + result);
+    console.log("Solved!\n" + result);
     return
 };
 
@@ -115,29 +115,9 @@ const placeWords = (wordList, startCells, gridWords, gridNumbers) => {
 };
 
 
-const puzzle = `..1.1..1...
-10000..1000
-..0.0..0...
-..1000000..
-..0.0..0...
-1000..10000
-..0.1..0...
-....0..0...
-..100000...
-....0..0...
-....0......`
-const words = [
-  'popcorn',
-  'fruit',
-  'flour',
-  'chicken',
-  'eggs',
-  'vegetables',
-  'pasta',
-  'pork',
-  'steak',
-  'cheese',
-]
+const puzzle = '2001\n0..0\n1000\n0..0'
+const words = ['casa', 'alan', 'ciao', 'anta']
+
 
 
 
