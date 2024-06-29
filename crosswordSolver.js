@@ -114,4 +114,8 @@ const placeWords = (wordList, startCells, gridWords, gridNumbers) => {
     return false;
 };
 
-crosswordSolver(`2001\n0..0\n1000\n0..0`, ['jasa', 'alan', 'jiao', 'anta']);
+
+const puzzle = '2001\n0..0\n1000\n0..0'
+const words = ['aaab', 'aaac', 'aaad', 'aaae']
+
+crosswordSolver(puzzle, words)
