@@ -1,3 +1,40 @@
+const crosswordSolver = (grid, wordList) => {
+    if (!checkInput(grid, wordList)) {
+        console.log("Error");
+        return
+    }
+
+    const gridNumbers = parseGrid(grid);
+    const startCells = findStartCells(gridNumbers);
+
+    if (startCells.reduce((sum, cell) => sum + gridNumbers[cell.row][cell.col], 0) !== wordList.length) {
+        console.log("Error");
+        return
+    }
+
+    if (!hasUniformWidth(gridNumbers)) {
+        console.log("Error");
+        return
+    }
+
+    if (new Set(wordList).size !== wordList.length) {
+        console.log("Error");
+        return
+    }
+
+    wordList.sort((a, b) => b.length - a.length);
+    const gridWords = gridNumbers.map(row => row.map(cell => cell === -1 ? "." : ""));
+
+    if (!placeWords(wordList, startCells, gridWords, gridNumbers)) {
+        console.log("Error");
+        return
+    }
+
+    const result = gridWords.map(row => row.join("")).join("\n");
+    console.log("Output:\n" + result);
+    return
+};
+
 const checkInput = (grid, wordList) => {
     if (typeof grid !== "string" || !Array.isArray(wordList) || wordList.some(word => typeof word !== "string")) {
         return false;
@@ -77,41 +114,4 @@ const placeWords = (wordList, startCells, gridWords, gridNumbers) => {
     return false;
 };
 
-const crosswordSolver = (grid, wordList) => {
-    if (!checkInput(grid, wordList)) {
-        console.log("Error");
-        return "Error";
-    }
-
-    const gridNumbers = parseGrid(grid);
-    const startCells = findStartCells(gridNumbers);
-
-    if (startCells.reduce((sum, cell) => sum + gridNumbers[cell.row][cell.col], 0) !== wordList.length) {
-        console.log("Error");
-        return "Error";
-    }
-
-    if (!hasUniformWidth(gridNumbers)) {
-        console.log("Error");
-        return "Error";
-    }
-
-    if (new Set(wordList).size !== wordList.length) {
-        console.log("Error");
-        return "Error";
-    }
-
-    wordList.sort((a, b) => b.length - a.length);
-    const gridWords = gridNumbers.map(row => row.map(cell => cell === -1 ? "." : ""));
-
-    if (!placeWords(wordList, startCells, gridWords, gridNumbers)) {
-        console.log("Error");
-        return "Error";
-    }
-
-    const result = gridWords.map(row => row.join("")).join("\n");
-    console.log("Output:\n" + result);
-    return "Output:\n" + result;
-};
-
-crosswordSolver(`2001\n0..0\n1000\n0..0`, ['hasc', 'clag', 'hiaj', 'anta']);
+crosswordSolver(`2001\n0..0\n1000\n0..0`, ['jasa', 'alan', 'jiao', 'anta']);
