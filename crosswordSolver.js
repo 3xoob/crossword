@@ -115,7 +115,30 @@ const placeWords = (wordList, startCells, gridWords, gridNumbers) => {
 };
 
 
-const puzzle = '2001\n0..0\n1000\n0..0'
-const words = ['aaab', 'aaac', 'aaad', 'aaae']
+const puzzle = `..1.1..1...
+10000..1000
+..0.0..0...
+..1000000..
+..0.0..0...
+1000..10000
+..0.1..0...
+....0..0...
+..100000...
+....0..0...
+....0......`
+const words = [
+  'popcorn',
+  'fruit',
+  'flour',
+  'chicken',
+  'eggs',
+  'vegetables',
+  'pasta',
+  'pork',
+  'steak',
+  'cheese',
+]
+
+
 
 crosswordSolver(puzzle, words)
